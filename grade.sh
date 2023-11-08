@@ -7,7 +7,18 @@ mkdir grading-area
 
 git clone $1 student-submission
 echo 'Finished cloning'
+if [ -f "./student-submission/ListExamples.java" ]; 
+    then 
+        cp ./student-submission/ListExamples.java ./grading-area
+        cp ./TestListExamples.java ./grading-area
+        cd grading-area
+        javac TestListExamples.java ListExamples.java
+        set +e
+        java TestListExamples.java
 
+else 
+    exit
+fi
 
 # Draw a picture/take notes on the directory structure that's set up after
 # getting to this point
